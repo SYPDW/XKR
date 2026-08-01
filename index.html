@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#D11A2A">
+<title>XKR · AVR Series — After-Sales Technical Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#D11A2A; --red-deep:#9E0B16; --red-bright:#FF2D3F;
+    --ink:#15171c; --ink-2:#1f232b; --line:#e6e8ee; --paper:#f6f7fb;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+    --disp:'Oswald','Arial Narrow',sans-serif;
+    --body:'IBM Plex Sans',system-ui,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--body);color:var(--ink);background:var(--paper);
+    min-height:100vh;display:flex;flex-direction:column;
+    -webkit-font-smoothing:antialiased;
+  }
+  .hazard{height:14px;background:repeating-linear-gradient(45deg,var(--red) 0 18px,var(--ink) 18px 36px)}
+  .wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 22px}
+  .card{
+    width:100%;max-width:720px;background:#fff;border-radius:18px;
+    box-shadow:0 30px 80px -30px rgba(21,23,28,.35),0 2px 0 rgba(21,23,28,.04);
+    overflow:hidden;border:1px solid var(--line);
+  }
+  .head{
+    padding:34px 36px 28px;
+    background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 60%,#2a2f3a 100%);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .head::after{
+    content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;
+    background:radial-gradient(circle,rgba(255,45,63,.35),transparent 65%);
+  }
+  .brand{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+  .logo{
+    width:46px;height:46px;border-radius:10px;background:var(--red);
+    display:grid;place-items:center;font-family:var(--disp);font-weight:700;
+    font-size:20px;letter-spacing:.04em;color:#fff;
+    box-shadow:0 8px 22px -8px rgba(255,45,63,.8),inset 0 0 0 1px rgba(255,255,255,.18);
+  }
+  .brand .name{font-family:var(--disp);font-weight:600;letter-spacing:.18em;font-size:14px;color:#cfd3dc;text-transform:uppercase}
+  .brand .name b{color:#fff;font-weight:700;letter-spacing:.22em}
+  h1{
+    margin:22px 0 6px;font-family:var(--disp);font-weight:700;
+    font-size:clamp(28px,5vw,42px);letter-spacing:.02em;line-height:1.05;
+    text-transform:uppercase;position:relative;z-index:1;
+  }
+  h1 .l2{display:block;color:var(--red-bright);font-weight:500;letter-spacing:.32em;font-size:clamp(13px,2vw,16px);margin-top:8px}
+  .sub{color:#aab0bd;font-size:14px;letter-spacing:.04em;position:relative;z-index:1;margin-top:10px}
+  .body{padding:30px 36px 36px}
+  .pick-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red-deep);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .pick-label::before,.pick-label::after{content:'';flex:1;height:1px;background:var(--line)}
+  .langs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:520px){.langs{grid-template-columns:1fr}}
+  .lang{
+    display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
+    padding:18px 20px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
+    transition:.2s transform,.2s border-color,.2s box-shadow;position:relative;overflow:hidden;
+  }
+  .lang:hover{transform:translateY(-2px);border-color:var(--red);box-shadow:0 14px 30px -16px rgba(209,26,42,.55)}
+  .lang .flag{
+    width:42px;height:42px;border-radius:9px;display:grid;place-items:center;
+    font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.06em;
+    background:linear-gradient(135deg,var(--red-deep),var(--red));color:#fff;flex-shrink:0;
+  }
+  .lang .meta{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .lang .meta .t{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+  .lang .meta .d{font-size:12.5px;color:#6b7280;letter-spacing:.02em}
+  .lang .arrow{margin-left:auto;color:var(--red);font-size:20px;font-weight:600;transition:.2s transform}
+  .lang:hover .arrow{transform:translateX(4px)}
+  .lang.recommended{border-color:var(--red);box-shadow:0 0 0 3px rgba(209,26,42,.08)}
+  .lang.recommended::after{
+    content:'AUTO';position:absolute;top:8px;right:10px;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:#fff;
+    background:var(--red);padding:2px 7px;border-radius:5px;
+  }
+  .tip{
+    margin-top:22px;padding:12px 14px;border-radius:10px;
+    background:linear-gradient(90deg,rgba(209,26,42,.07),transparent);
+    border-left:3px solid var(--red);font-size:12.5px;color:#444;line-height:1.55;
+  }
+  .tip b{color:var(--red-deep)}
+  footer{
+    padding:18px 22px 26px;text-align:center;color:#8a909c;font-size:11.5px;
+    letter-spacing:.06em;font-family:var(--mono);
+  }
+  footer .fr{color:var(--red-bright)}
+</style>
+</head>
+<body>
+  <div class="hazard"></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">
+        <div class="brand">
+          <div class="logo">XKR</div>
+          <div class="name"><b>XINGKERONG</b> &nbsp;·&nbsp; SINCRON</div>
+        </div>
+        <h1>AVR Series<span class="l2">After-Sales Technical Data</span></h1>
+        <div class="sub">Servo-motor automatic voltage regulator · service &amp; repair manual</div>
+      </div>
+      <div class="body">
+        <div class="pick-label">Select language · 选择语言</div>
+        <div class="langs">
+          <a class="lang" id="btn-en" href="en.html">
+            <div class="flag">EN</div>
+            <div class="meta">
+              <div class="t">English</div>
+              <div class="d">After-sales technical data</div>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+          <a class="lang" id="btn-zh" href="zh.html">
+            <div class="flag">中</div>
+            <div class="meta">
+              <div class="t">中文</div>
+              <div class="d">售后维修技术资料</div>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+        </div>
+        <div class="tip">
+          <b>Tip · 提示：</b>
+          If opened inside WeChat on iPhone and the page looks wrong, tap <b>⋯</b> at the top-right and choose <b>Open in Browser / 在浏览器打开</b>.
+          如在 iPhone 微信内显示异常，点右上角 <b>⋯</b> 选 <b>在浏览器打开</b>。
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    XKR · AVR &nbsp;|&nbsp; <span class="fr">●</span> &nbsp;Service documentation &nbsp;|&nbsp; v1.0
+  </footer>
+<script>
+  // Highlight the button matching the browser language; do NOT auto-redirect (let user choose).
+  (function(){
+    var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    var id = lang.indexOf('zh') === 0 ? 'btn-zh' : 'btn-en';
+    var el = document.getElementById(id);
+    if (el) el.classList.add('recommended');
+  })();
+</script>
+</body>
+</html>
